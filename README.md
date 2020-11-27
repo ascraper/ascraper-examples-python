@@ -58,14 +58,17 @@ python3 ascraper.py --user "xxxx" --file links.txt --concurrent 5 --selector tit
 
 # BEST PRACTICE
 * Better few threads with sleep, but one fast thread
+
 Try to simulate regular user if targed site is sensitive to crawling. Imagine that your code should moke a real user. So, make more slow users, but one fast.
 
 * Use real cookies
+
 Cookies will help you to simulate real user. Considering that crurl/wget and simple bots doesn’t have cookies on start - pass cookies from real browser.
 It could help to skip some validations.
 You can pass cookies and use the ``session``, API will persist cookies for 15 minutes. ``Set-Cookie`` header will be persisted to session too.
 
 * Simulate real user behavior using session
+
 To achieve more queality on scraping, try no to speedup crawling. Carefully calculate rates of crawler. 
 Its a good decision to do requests before crawling target site, e.g. crawl google.com to obtain cookies in session mode and that crawl target site.
 
