@@ -41,6 +41,16 @@ optional arguments:
 ```
 
 ### Multithreading
+
+Prepare the list of URL's. One row - one URL.
+To run the code concurrently pass ``--concurrent`` flag with numbers of "threads" and the ``--file`` with path to the file with urls.
+
+Code will devide the file to chunks based on ``--concurrent`` flag.
+
+"Threads" will run simultaneously. *Be aware,* code has a random sleep from 2 to 7 in each thread. That was done to improve successful rate of crawling.
+
+See details in *Best Practice* section.
+
 ```
 python3 ascraper.py --user "xxxx" --file links.txt --concurrent 5 --selector title --cookie "yandexuid=7194876411567614048; yuidss=7194876411567614048; _ym_uid=1576853108917432489; mda=0; gdpr=0; _ym_d=1598867302; my=YwA=; yp=1599150048.yrts.1567614048#1599150048.yrtsi.1567614048#1601459301.ygu.1#1614635304.szm.2:1920x1200:1920x1041#1601545715.csc.1; i=W2fGtus3JV5gS29Hd1MrGBQXL74Q1vemmMJnhk19CQNA4KVJjsx8MFcUSFanu9R0yKkIxpTD1p0thV8ziZmH6Iomxtg=; ymex=1632553347.yrts.1601017347#1630992553.yrtsi.1599456553; is_gdpr=1; is_gdpr_b=CNnvZBCcBBgB; yabs-sid=382528651606310967; skid=6402682041606340377; sync_cookie_csrf=1707620066fake; _ym_visorc=b; _ym_isad=2"
 
@@ -48,9 +58,16 @@ python3 ascraper.py --user "xxxx" --file links.txt --concurrent 5 --selector tit
 
 # BEST PRACTICE
 * Better maythreads with sleep, but one fast thread
-...
+Try to simulate regular user if targed site is sensitive to crawling. Imagine that your code should moke a real user. So, make more slow users, but one fast.
+
 * Use real cookies
-...
+Cookies will help you to simulate real user. Considering that crurl/wget and simple bots doesn’t have cookies on start - pass cookies from real browser.
+It could help to skip some validations.
+You can pass cookies and use the ``session``, API will persist cookies for 15 minutes. ``Set-Cookie`` header will be persisted to session too.
+
 * Simulate real user behavior using session
-...
+To achieve more queality on scraping, try no to speedup crawling. Carefully calculate rates of crawler. 
+Its a good decision to do requests before crawling target site, e.g. crawl google.com to obtain cookies in session mode and that crawl target site.
+
 * Retry failed urls later
+Better to cralw with non stopping behavior and than, later, re-crawl failed links
