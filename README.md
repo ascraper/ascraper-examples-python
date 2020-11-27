@@ -59,7 +59,7 @@ python3 ascraper.py --user "xxxx" --file links.txt --concurrent 5 --selector tit
 # BEST PRACTICE
 * Better few threads with sleep, but one fast thread
 
-Try to simulate regular user if targed site is sensitive to crawling. Imagine that your code should moke a real user. So, make more slow users, but one fast.
+Try to simulate regular user if targed site is sensitive to crawling. Imagine that your code should mocke a real user. So, make more slow users, but one fast.
 
 * Use real cookies
 
