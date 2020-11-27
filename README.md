@@ -65,7 +65,7 @@ Try to simulate regular user if targed site is sensitive to crawling. Imagine th
 
 Cookies will help you to simulate real user. Considering that crurl/wget and simple bots doesn’t have cookies on start - pass cookies from real browser.
 It could help to skip some validations.
-You can pass cookies and use the ``session``, API will persist cookies for 15 minutes. ``Set-Cookie`` header obtained from target  will be persisted to session too.
+You can pass cookies and use the ``session``, API will persist cookies for 15 minutes. ``Set-Cookie`` header obtained from target site will be persisted to the session too.
 
 * Simulate real user behavior using session
 
